@@ -27,5 +27,6 @@ jobs:
         pip install -r requirements.txt
     - name: Run Tests
       run: |
-        echo 1234 > /scripts/key
+      touch scripts/key
+        echo 1234 > scripts/key
         python manage.py test
