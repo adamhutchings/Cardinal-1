@@ -39,7 +39,7 @@ def logger(cself, request, fn, *args, **kwargs):
         "\n".join(("\t" + str(arg)) for arg in args) + "\n" if len(args) != 0 else "[no arguments]"
     )
     kwargs_string = (
-        "\n".join(("\t" + f'{arg} : {str(kwargs[arg])}') for arg in kwargs.keys()) + "\n"
+        "\n".join(("\t" + f'{arg} : \'{str(kwargs[arg])}\'') for arg in kwargs.keys()) + "\n"
         if len(kwargs.keys()) != 0
         else "[no arguments]"
     )
