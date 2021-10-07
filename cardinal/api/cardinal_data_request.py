@@ -12,6 +12,8 @@ COLLECTIONS = [
     "calc_pickability",
     "calc_tba_tim",
     "calc_spr",
+    "match_schedule",
+    "teams_list"
 ]
 
 
