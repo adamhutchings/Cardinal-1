@@ -50,23 +50,20 @@ There are two main uses for Cardinal. Both involve serving data to the Viewer ap
 
 # API Usage
 
-![image](https://user-images.githubusercontent.com/35516367/134791549-4c3fac97-e14e-4679-8930-1e44b0286e3a.png)
+![image](https://user-images.githubusercontent.com/35516367/136669436-7c70aa2d-62db-486e-be0f-e5632af51d99.png)
 
 ## Test Data Generator
 ```
 # Format
-curl -X GET "http://127.0.0.1:8000/cardinal/api/generate/<schema_name>/?format=json" \
-  -H "Authorization: Token abc"
+curl -X GET "https://cardinal.citruscircuits.org/cardinal/api/generate/<schema_name>/?format=json"
 ```
 ```
 # Example
-curl -X GET "http://127.0.0.1:8000/cardinal/api/generate/calc_tba_team_schema/?format=json" \
-  -H "Authorization: Token abc"
+curl -X GET "https://cardinal.citruscircuits.org/cardinal/api/generate/calc_tba_team_schema/?format=json"
 ```
 ```
 # Example with count
-curl -X GET "http://127.0.0.1:8000/cardinal/api/generate/calc_tba_team_schema/?format=json&count=10" \
-  -H "Authorization: Token abc"
+curl -X GET "https://cardinal.citruscircuits.org/cardinal/api/generate/calc_tba_team_schema/?format=json&count=10"
 ```
 
 #### Output

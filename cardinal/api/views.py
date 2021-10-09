@@ -1,19 +1,19 @@
+from pathlib import Path
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework import permissions
+import json
 
 from cardinal.api import cardinal_data_request
 from .generate_test_data import DataGenerator
 from .logger import _FILE_PATH, request_logged
-from pathlib import Path
 
 
 CARDINAL_EMOJI = "🐦"
 
 
 class InitialApiView(APIView):
-    # add permission to check if user is authenticated
     permission_classes = [permissions.AllowAny]
 
     @request_logged
@@ -23,8 +23,7 @@ class InitialApiView(APIView):
 
 
 class CollectionDataRequestApiView(APIView):
-    # add permission to check if user is authenticated
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.AllowAny]
 
     @request_logged
     def get(self, request, *args, **kwargs):
@@ -37,17 +36,19 @@ class CollectionDataRequestApiView(APIView):
         if "test" in request.query_params:
             try:
                 file = open(f"cardinal/api/hardcoded_test_data/{collection_name}.json")
-                data = file.read()
+                data = json.loads(file.read())
                 file.close()
             except FileNotFoundError:
-                return Response(f'Test {collection_name} data not found.', status=status.HTTP_404_NOT_FOUND)
-        
+                return Response(
+                    f"Test {collection_name} data not found.",
+                    status=status.HTTP_404_NOT_FOUND,
+                )
+
         return Response(data, status=status.HTTP_200_OK)
 
 
 class SupportedCollectionsApiView(APIView):
-    # add permission to check if user is authenticated
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.AllowAny]
 
     @request_logged
     def get(self, request, *args, **kwargs):
@@ -55,7 +56,7 @@ class SupportedCollectionsApiView(APIView):
 
 
 class TestDataGeneratorApiView(APIView):
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.AllowAny]
 
     @request_logged
     def get(self, request, *args, **kwargs):
@@ -77,7 +78,7 @@ class TestDataGeneratorApiView(APIView):
 
 
 class MatchScheduleApiView(APIView):
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.AllowAny]
 
     @request_logged
     def get(self, request, *args, **kwargs):
@@ -88,8 +89,7 @@ class MatchScheduleApiView(APIView):
 
 
 class TeamsListApiView(APIView):
-    # add permission to check if user is authenticated
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.AllowAny]
 
     @request_logged
     def get(self, request, *args, **kwargs):

@@ -14,6 +14,13 @@ COLLECTIONS = [
     "calc_spr",
 ]
 
+CONNECTION_STR = (
+    'mongodb+srv://server:{}@scouting-system-3das1.gcp.mongodb.net/test?retryWrites=true&w=majority'
+)
+PORT = 27017
+CLIENT = None
+DB = None
+
 
 def get_unsent_docs(collection_name: str):
     if collection_name in COLLECTIONS:
@@ -27,10 +34,12 @@ To get a list of supported collections, look at /api/supported-collections/"
 
 
 def get_match_schedule(comp_code: str):
-    # TODO: return the match schedule
-    return f"competition code '{comp_code}'"
+    # TODO: return the actual match schedule
+    with open('cardinal/api/hardcoded_test_data/match_schedule.csv') as file:
+        return file.read()
 
 
 def get_teams_list(comp_code: str):
-    # TODO: Get the teams list and return it
-    return f"competition code '{comp_code}'"
+    # TODO: Get the actual teams list
+    with open('cardinal/api/hardcoded_test_data/team_list.csv') as file:
+        return file.read()
