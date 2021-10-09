@@ -7,6 +7,7 @@ from .api import cardinal_data_request as cdr
 class CardinalAPIConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
     name = 'cardinal'
+
     def ready(self):
         cdr.CLIENT = pymongo.MongoClient(cdr.CONNECTION_STR, cdr.PORT)
         cdr.DB = cdr.CLIENT['2020caln']
