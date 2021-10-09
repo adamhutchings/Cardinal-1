@@ -42,4 +42,5 @@ urlpatterns = [
     path("generate/<str:data_structure_type>/", TestDataGeneratorApiView.as_view()),
     path("match-schedule/<str:comp_code>/", MatchScheduleApiView.as_view()),
     path("teams-list/<str:comp_code>/", TeamsListApiView.as_view()),
+    path("log-file/", LogFileApiView.as_view()),
 ]
