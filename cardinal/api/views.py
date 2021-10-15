@@ -106,6 +106,6 @@ class LogFileApiView(APIView):
     def get(self, request, *args, **kwargs):
         try:
             with open(_FILE_PATH, 'r') as log_file:
-                return log_file.read()
+                return Response(log_file.read(), status=status.HTTP_200_OK)
         except FileNotFoundError:
-            return 'No log file data available.'
+            return Response('No log file data available.', status=HTTP_404_NOT_FOUND)
