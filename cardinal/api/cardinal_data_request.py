@@ -26,7 +26,7 @@ def get_unsent_docs(collection_name: str):
     if collection_name not in COLLECTIONS:
         return f"The collection '{collection_name}' does not exist. \
 To get a list of supported collections, look at /api/supported-collections/"
-    
+
     # TODO TODO TODO - ACTUALLY get unsent data, NOT just all of the data
     # available.
     return list(DB[collection_name].find({}))
