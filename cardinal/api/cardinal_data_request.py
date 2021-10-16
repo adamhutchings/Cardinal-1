@@ -1,4 +1,5 @@
 """All the "main" cardinal functionality should go here."""
+from typing import List, Dict
 
 COLLECTIONS = [
     "obj_pit_collection",
@@ -12,6 +13,21 @@ COLLECTIONS = [
     "calc_pickability",
     "calc_tba_tim",
     "calc_spr",
+    "raw_subj_pit",
+
+    # different names
+    "predicted_team",
+    "subj_team",
+    "obj_tim",
+    "tba_team",
+    "tba_tim",
+    "predicted_aim",
+    "pickability",
+    "tba_cache",
+    "obj_team",
+    "subj_aim",
+    "raw_obj_pit",
+    "unconsolidated_obj_tim",
 ]
 
 
@@ -20,9 +36,16 @@ PORT = 27017
 
 
 CLIENT = None
-
-
 DB = None
+
+
+def serialize_documents(docs) -> List[Dict]:
+    """Remove the '_id' from each document"""
+    docs = list(docs)
+    for doc in docs:
+        doc.pop("_id", None)
+
+    return docs
 
 
 def get_unsent_docs(collection_name: str):
@@ -30,9 +53,11 @@ def get_unsent_docs(collection_name: str):
         return f"The collection '{collection_name}' does not exist. \
 To get a list of supported collections, look at /api/supported-collections/"
 
-    # TODO TODO TODO - ACTUALLY get unsent data, NOT just all of the data
-    # available.
-    return list(DB[collection_name].find({}))
+    # TODO - Actually get unsent data, not just all of the data
+    # available. This will be called the "Data Delta" feature
+    collections = DB.list_collection_names()
+
+    return serialize_documents(DB[collection_name].find())
 
 
 def get_match_schedule(comp_code: str):
