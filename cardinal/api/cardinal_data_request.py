@@ -15,9 +15,7 @@ COLLECTIONS = [
 ]
 
 
-CONNECTION_STR = (
-    'mongodb+srv://server:{}@scouting-system-3das1.gcp.mongodb.net/test?retryWrites=true&w=majority'
-)
+CONNECTION_STR = "mongodb+srv://cardinal-web-server:{}@scouting-system-3das1.gcp.mongodb.net/test?authSource=admin&replicaSet=scouting-system-shard-0&w=majority&readPreference=primary&appname=MongoDB%20Compass&retryWrites=true&ssl=true"
 PORT = 27017
 
 
@@ -39,11 +37,11 @@ To get a list of supported collections, look at /api/supported-collections/"
 
 def get_match_schedule(comp_code: str):
     # TODO: return the actual match schedule
-    with open('cardinal/api/hardcoded_test_data/match_schedule.csv') as file:
+    with open("cardinal/api/hardcoded_test_data/match_schedule.csv") as file:
         return file.read()
 
 
 def get_teams_list(comp_code: str):
     # TODO: Get the actual teams list
-    with open('cardinal/api/hardcoded_test_data/team_list.csv') as file:
+    with open("cardinal/api/hardcoded_test_data/team_list.csv") as file:
         return file.read()
