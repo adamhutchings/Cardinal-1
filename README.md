@@ -43,11 +43,11 @@ There are two main uses for Cardinal. Both involve serving data to the Viewer ap
 2.
 - Start the server (test)
 	```
-	sh scripts/testserver.sh
+	./scripts/testserver.sh
 	```
 - Start the server (production)
 	```
-	sh scripts/runserver.sh
+	./scripts/runserver.sh
 	```
 
 ![2021-09-15_23-59](https://user-images.githubusercontent.com/35516367/133566395-8b683eda-ba8e-4f1d-8362-dabdbd083461.png)
