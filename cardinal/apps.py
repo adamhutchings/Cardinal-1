@@ -9,5 +9,14 @@ class CardinalAPIConfig(AppConfig):
     name = 'cardinal'
 
     def ready(self):
-        cdr.CLIENT = pymongo.MongoClient(cdr.CONNECTION_STR, cdr.PORT)
+
+        # Get the password string and whatnot
+        try:
+            with open('password.txt', 'r') as file:
+                password = file.read()
+        except FileNotFoundError:
+            print('You need to have a file named password.txt with the cloud password.')
+            exit(1)
+
+        cdr.CLIENT = pymongo.MongoClient(cdr.CONNECTION_STR.format(password), cdr.PORT)
         cdr.DB = cdr.CLIENT['2020caln']

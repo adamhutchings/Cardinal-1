@@ -28,14 +28,13 @@ DB = None
 
 
 def get_unsent_docs(collection_name: str):
-    if collection_name in COLLECTIONS:
-        # TODO: get documents from that collection
-        # filter through and only return new documents
-        return f"Requested data from {collection_name}"
-
-    else:
+    if collection_name not in COLLECTIONS:
         return f"The collection '{collection_name}' does not exist. \
 To get a list of supported collections, look at /api/supported-collections/"
+
+    # TODO TODO TODO - ACTUALLY get unsent data, NOT just all of the data
+    # available.
+    return list(DB[collection_name].find({}))
 
 
 def get_match_schedule(comp_code: str):
