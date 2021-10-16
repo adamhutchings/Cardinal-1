@@ -14,7 +14,6 @@ COLLECTIONS = [
     "calc_tba_tim",
     "calc_spr",
     "raw_subj_pit",
-
     # different names
     "predicted_team",
     "subj_team",
